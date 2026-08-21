@@ -3,3 +3,6 @@ obj/
 /.idea
 .DS_Store
 *.user
+*.nupkg
+*.trx
+artifacts/

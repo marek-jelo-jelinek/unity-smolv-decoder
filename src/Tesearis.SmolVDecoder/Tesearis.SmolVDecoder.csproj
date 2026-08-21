@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+        <LangVersion>9.0</LangVersion>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <RootNamespace>Tesearis.SmolVDecoder</RootNamespace>
+        <AssemblyName>Tesearis.SmolVDecoder</AssemblyName>
+        <Version>1.0.0</Version>
+        <PackageId>Tesearis.SmolVDecoder</PackageId>
+        <Description>Decode-only C# port of SMOL-V for reading SMOL-V-compressed SPIR-V out of Unity's Vulkan shader cache.</Description>
+        <Authors>Tesearis.SmolVDecoder contributors</Authors>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageProjectUrl>https://github.com/marek-jelo-jelinek/unity-smolv-decoder</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/marek-jelo-jelinek/unity-smolv-decoder</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <Copyright>Copyright (c) 2026 Marek Jelínek</Copyright>
+        <PackageTags>spir-v;smol-v;unity;vulkan;shader</PackageTags>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <PackageOutputPath>$(MSBuildThisFileDirectory)../../artifacts/</PackageOutputPath>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="../../LICENSE" Pack="true" PackagePath=""/>
+        <None Include="../../README.md" Pack="true" PackagePath=""/>
+        <None Include="../../ThirdPartyNotices.md" Pack="true" PackagePath=""/>
+    </ItemGroup>
+</Project>

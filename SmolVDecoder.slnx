@@ -1,8 +1,0 @@
-<Solution>
-  <Folder Name="/src/">
-    <Project Path="src/SmolVDecoder/SmolVDecoder.csproj" />
-  </Folder>
-  <Folder Name="/tests/">
-    <Project Path="tests/SmolVDecoder.Tests/SmolVDecoder.Tests.csproj" />
-  </Folder>
-</Solution>

@@ -6,16 +6,16 @@ Unity Editor utility for decoding SMOL-V-compressed SPIR-V modules from Vulkan s
 Build the DLL with the .NET SDK:
 
 ```
-dotnet build -c Release src/SmolVDecoder
+dotnet build -c Release src/Tesearis.SmolVDecoder
 ```
 
 or, from the repo root, build the whole solution (library + tests):
 
 ```
-dotnet build -c Release SmolVDecoder.slnx
+dotnet build -c Release Tesearis.SmolVDecoder.slnx
 ```
 
-The output is `src/SmolVDecoder/bin/Release/netstandard2.0/SmolVDecoder.dll`. Drop it into a Unity
+The output is `src/Tesearis.SmolVDecoder/bin/Release/netstandard2.0/Tesearis.SmolVDecoder.dll`. Drop it into a Unity
 project's `Assets/Plugins/Editor` folder (or any folder named `Editor`), then in the Inspector's
 Plugin settings restrict it to the Editor platform, since this is meant to run inside the Unity
 Editor / build pipeline only, not in players.
@@ -29,7 +29,7 @@ dotnet test
 ## Usage
 
 ```csharp
-if (SmolVDecoder.SmolV.TryDecodeStages(compiledData, out var vertexSpirv, out var fragmentSpirv, out var error))
+if (Tesearis.SmolVDecoder.SmolV.TryDecodeStages(compiledData, out var vertexSpirv, out var fragmentSpirv, out var error))
 {
     // vertexSpirv / fragmentSpirv are raw SPIR-V bytes
 }

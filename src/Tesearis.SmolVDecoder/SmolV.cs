@@ -1,4 +1,4 @@
-namespace SmolVDecoder
+namespace Tesearis.SmolVDecoder
 {
     /// <summary>Decode-only C# port of the SMOL-V -> SPIR-V decoder from aras-p/smol-v
     /// (https://github.com/aras-p/smol-v, MIT/public domain, authored by Aras Pranckevicius). Only the decode path

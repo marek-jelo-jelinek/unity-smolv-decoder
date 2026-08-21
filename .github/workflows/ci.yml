@@ -2,16 +2,33 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
   pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup .NET SDKs
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.0.x
-      - run: dotnet build SmolVDecoder.slnx -c Release
-      - run: dotnet test SmolVDecoder.slnx -c Release
+          dotnet-version: |
+            8.0.x
+            9.0.x
+
+      - name: Restore
+        run: dotnet restore Tesearis.SmolVDecoder.slnx
+
+      - name: Build (Release)
+        run: dotnet build Tesearis.SmolVDecoder.slnx -c Release --no-restore
+
+      - name: Test (Release)
+        run: dotnet test Tesearis.SmolVDecoder.slnx -c Release --no-build --verbosity normal
