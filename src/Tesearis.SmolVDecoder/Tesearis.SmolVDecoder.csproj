@@ -8,12 +8,12 @@
         <AssemblyName>Tesearis.SmolVDecoder</AssemblyName>
         <Version>1.0.0</Version>
         <PackageId>Tesearis.SmolVDecoder</PackageId>
-        <Description>Decode-only C# port of SMOL-V for reading SMOL-V-compressed SPIR-V out of Unity's Vulkan shader cache.</Description>
+        <Description>Standalone decode-only C# port of SMOL-V for turning SMOL-V-compressed SPIR-V back into raw SPIR-V, e.g. out of Unity's Vulkan shader cache.</Description>
         <Authors>Tesearis.SmolVDecoder contributors</Authors>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageProjectUrl>https://github.com/marek-jelo-jelinek/unity-smolv-decoder</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/marek-jelo-jelinek/unity-smolv-decoder</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/marek-jelo-jelinek/smolv-decoder</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/marek-jelo-jelinek/smolv-decoder</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <Copyright>Copyright (c) 2026 Marek Jelínek</Copyright>
         <PackageTags>spir-v;smol-v;unity;vulkan;shader</PackageTags>

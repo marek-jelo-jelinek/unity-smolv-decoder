@@ -1,3 +1,5 @@
+using System;
+
 namespace Tesearis.SmolVDecoder
 {
     /// <summary>Decode-only C# port of the SMOL-V -> SPIR-V decoder from aras-p/smol-v
@@ -541,7 +543,8 @@ namespace Tesearis.SmolVDecoder
             }
 
             var decodedSizeRaw = ReadUInt32(data, offset + 20);
-            if (decodedSizeRaw < 20 || decodedSizeRaw % 4 != 0 || decodedSizeRaw > int.MaxValue)
+            var maxBytes = Math.Min(int.MaxValue, (long)(data.Length - offset) * 64);
+            if (decodedSizeRaw < 20 || decodedSizeRaw % 4 != 0 || decodedSizeRaw > maxBytes)
             {
                 error = "Invalid SMOL-V decoded size.";
                 return false;
@@ -822,31 +825,31 @@ namespace Tesearis.SmolVDecoder
         {
             switch (op)
             {
-                case OpDecorate:        return OpNop;
-                case OpNop:             return OpDecorate;
-                case OpLoad:            return OpUndef;
-                case OpUndef:           return OpLoad;
-                case OpStore:           return OpSourceContinued;
+                case OpDecorate: return OpNop;
+                case OpNop: return OpDecorate;
+                case OpLoad: return OpUndef;
+                case OpUndef: return OpLoad;
+                case OpStore: return OpSourceContinued;
                 case OpSourceContinued: return OpStore;
-                case OpAccessChain:     return OpSource;
-                case OpSource:          return OpAccessChain;
-                case OpVectorShuffle:   return OpSourceExtension;
+                case OpAccessChain: return OpSource;
+                case OpSource: return OpAccessChain;
+                case OpVectorShuffle: return OpSourceExtension;
                 case OpSourceExtension: return OpVectorShuffle;
-                case OpMemberDecorate:  return OpString;
-                case OpString:          return OpMemberDecorate;
-                case OpLabel:           return OpLine;
-                case OpLine:            return OpLabel;
-                case OpVariable:        return OpUnused9;
-                case OpUnused9:         return OpVariable;
-                case OpFMul:            return OpExtension;
-                case OpExtension:       return OpFMul;
-                case OpFAdd:            return OpExtInstImport;
-                case OpExtInstImport:   return OpFAdd;
-                case OpTypePointer:     return OpMemoryModel;
-                case OpMemoryModel:     return OpTypePointer;
-                case OpFNegate:         return OpEntryPoint;
-                case OpEntryPoint:      return OpFNegate;
-                default:                return op;
+                case OpMemberDecorate: return OpString;
+                case OpString: return OpMemberDecorate;
+                case OpLabel: return OpLine;
+                case OpLine: return OpLabel;
+                case OpVariable: return OpUnused9;
+                case OpUnused9: return OpVariable;
+                case OpFMul: return OpExtension;
+                case OpExtension: return OpFMul;
+                case OpFAdd: return OpExtInstImport;
+                case OpExtInstImport: return OpFAdd;
+                case OpTypePointer: return OpMemoryModel;
+                case OpMemoryModel: return OpTypePointer;
+                case OpFNegate: return OpEntryPoint;
+                case OpEntryPoint: return OpFNegate;
+                default: return op;
             }
         }
 
@@ -912,6 +915,7 @@ namespace Tesearis.SmolVDecoder
                 buffer[pos + 2] = (byte)(value >> 16);
                 buffer[pos + 3] = (byte)(value >> 24);
             }
+
             pos += 4;
         }
     }
